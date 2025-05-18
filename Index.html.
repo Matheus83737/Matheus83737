@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Inspirado no Roblox</title>
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1261a0, #1f8ec1);
+      font-family: Arial, sans-serif;
+    }
+    .login-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 320px;
+      text-align: center;
+    }
+    .login-card h1 {
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    .login-card input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .login-card button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0069d9;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .login-card button:hover {
+      background: #005bb5;
+    }
+    .login-card .links {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .login-card .links a {
+      color: #0069d9;
+      text-decoration: none;
+    }
+    .login-card .links a:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: #d93025;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h1>Entrar</h1>
+    <div class="error" id="error-msg">Preencha todos os campos.</div>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Usuário" />
+      <input type="password" id="password" placeholder="Senha" />
+      <button type="submit">Login</button>
+    </form>
+    <div class="links">
+      <a href="#">Esqueceu a senha?</a> •
+      <a href="#">Criar conta</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const err = document.getElementById('error-msg');
+
+      if (!user || !pass) {
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+
+      // Aqui você faria a chamada ao seu backend, por exemplo:
+      /*
+      fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: user, password: pass })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = '/dashboard';
+        } else {
+          err.textContent = data.message;
+          err.style.display = 'block';
+        }
+      })
+      .catch(() => {
+        err.textContent = 'Erro de conexão. Tente novamente.';
+        err.style.display = 'block';
+      });
+      */
+      // Para fins de demonstração:
+      alert(`Tentando logar como ${user}`);
+    });
+  </script>
+
+</body>
+</html>
